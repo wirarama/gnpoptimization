@@ -28,15 +28,21 @@ public class Gnpoptimization {
      */
     public static void main(String[] args) throws IOException{
         // TODO code application logic here
-        double[][] data1 = createdata(5.43,9.89,1000);
-        double[][] data2 = createdata(4.32,9.31,1000);
-        double[][] data3 = createdata(6.64,9.04,1000);
+        double[][] data1 = createdata(5.43,9.89,1000,"data1");
+        double[][] data2 = createdata(4.32,9.31,1000,"data2");
+        double[][] data3 = createdata(3.64,9.04,1000,"data3");
+        ArrayList<double[][]> dataplot = new ArrayList<>();
+        dataplot.add(data1);
+        dataplot.add(data2);
+        dataplot.add(data3);
+        String[] label = {"1","2","3"};
+        makeplot2(dataplot,label,"data","rule","silhouette");
     }
-    public static double[][] createdata(double min,double max,int data) throws IOException{
+    public static double[][] createdata(double min,double max,int data,String name) throws IOException{
         double pointer = max;
         double[][] plot = new double[data][2];
         int last=0;
-        try (final BufferedWriter out = new BufferedWriter(new FileWriter("test.csv"))){
+        try (final BufferedWriter out = new BufferedWriter(new FileWriter(name+".csv"))){
             for(int i=1;i<=data;i++){
                 double decreasement;
                 if(i>520 && i<560){
@@ -59,36 +65,13 @@ public class Gnpoptimization {
             }
             out.close();
             double[][] plot1 = cleanarray(plot,last);
-            makeplot1(plot1,"Silhouette","silhouette2.eps","rule","silhoette");
+            makeplot1(plot1,"Silhouette",name,"rule","silhoette");
         }
         return plot;
     }
     public static int randomrange(int min,int max){
         int randomvalue = min + (int)(Math.random() * ((max - min) + 1));
         return randomvalue;
-    }
-    public static void silhoutte(double[][] data,String testdate,String add,int subject){
-        int[] nuattribute = {2,4,8,16,24,32};
-        int[] nudataamount = {2,4,6,8,10,12};
-        ArrayList<double[][]> dataplot = new ArrayList<>();
-        String[] label = {"gnp","hierarchical","kmean"};
-        for (double[] data2 : data) {
-            double[][] data1 = new double[data[0].length][2];
-            for (int j = 0; j<data[0].length; j++) {
-                if(subject==1){
-                    data1[j][0] = nuattribute[j];
-                }else{
-                    data1[j][0] = nudataamount[j];
-                }
-                data1[j][1] = data2[j];
-            }
-            dataplot.add(data1);
-        }
-        if(subject==1){
-            makeplot2(dataplot,label,add,"attribute","silhouette value",testdate);
-        }else{
-            makeplot2(dataplot,label,add,"k","silhouette value",testdate);
-        }
     }
     public static void makeplot1(double[][] data,String label,String pngname,String xlabel,String ylabel){
         JavaPlot p = new JavaPlot();
@@ -102,7 +85,7 @@ public class Gnpoptimization {
         stl.setStyle(Style.LINES);
         epsexport(p,pngname+".eps");
     }
-    public static void makeplot2(ArrayList<double[][]> data,String[] label,String pngname,String xlabel,String ylabel,String testdate){
+    public static void makeplot2(ArrayList<double[][]> data,String[] label,String pngname,String xlabel,String ylabel){
         JavaPlot p = new JavaPlot();
         p.setTitle(pngname);
         p.setKey(JavaPlot.Key.BELOW);
@@ -115,7 +98,7 @@ public class Gnpoptimization {
             ((AbstractPlot) p.getPlots().get(k)).setTitle(label[k]);
             PlotStyle stl = ((AbstractPlot) p.getPlots().get(k)).getPlotStyle();
             stl.setStyle(Style.LINES);
-            epsexport(p,"log/"+testdate+"/"+pngname+testdate+".eps");
+            epsexport(p,pngname+".eps");
             k++;
         }
     }
