@@ -30,7 +30,7 @@ public class Gnpoptimization {
         // TODO code application logic here
         double[][] data1 = createdata(5.43,9.89,1000,"data1");
         double[][] data2 = createdata(4.32,9.31,1000,"data2");
-        double[][] data3 = createdata(3.64,9.04,1000,"data3");
+        double[][] data3 = createdata(5.64,9.04,1000,"data3");
         ArrayList<double[][]> dataplot = new ArrayList<>();
         dataplot.add(data1);
         dataplot.add(data2);
@@ -41,16 +41,21 @@ public class Gnpoptimization {
     public static double[][] createdata(double min,double max,int data,String name) throws IOException{
         double pointer = max;
         double[][] plot = new double[data][2];
+        double diff = max-min;
+        double decreasements = 0;
         int last=0;
         try (final BufferedWriter out = new BufferedWriter(new FileWriter(name+".csv"))){
             for(int i=1;i<=data;i++){
-                double decreasement;
-                if(i>520 && i<560){
-                    decreasement = (double)randomrange(100,500)/(double)30000;
-                }else if(i>602 && i<660){
-                    decreasement = (double)randomrange(100,500)/(double)40000;
-                }else{
-                    decreasement = (double)randomrange(0,500)/(double)80000;
+                double decreasement = 0;
+                if(decreasements<=diff){
+                    if(i>520 && i<560){
+                        decreasement = (double)randomrange(100,500)/(double)30000;
+                    }else if(i>602 && i<660){
+                        decreasement = (double)randomrange(100,500)/(double)40000;
+                    }else{
+                        decreasement = (double)randomrange(0,500)/(double)80000;
+                    }
+                    decreasements += decreasement;
                 }
                 pointer = pointer - decreasement;
                 System.out.println(pointer);
@@ -59,9 +64,9 @@ public class Gnpoptimization {
                 out.write(""+pointer);
                 out.newLine();
                 last=i;
-                if(pointer<=min){
+                /*if(pointer<=min){
                     break;
-                }
+                }*/
             }
             out.close();
             double[][] plot1 = cleanarray(plot,last);
