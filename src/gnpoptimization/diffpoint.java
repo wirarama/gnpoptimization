@@ -47,4 +47,32 @@ public class diffpoint {
         diffpoint[3][1] = 780;
         return diffpoint;
     }
+    public static int[][] diffpoint4(){
+        int[][] diffpoint = new int[5][2];
+        diffpoint[0][0] = 450;
+        diffpoint[0][1] = 470;
+        diffpoint[1][0] = 500;
+        diffpoint[1][1] = 520;
+        diffpoint[2][0] = 580;
+        diffpoint[2][1] = 600;
+        diffpoint[3][0] = 650;
+        diffpoint[3][1] = 680;
+        diffpoint[3][0] = 700;
+        diffpoint[3][1] = 780;
+        return diffpoint;
+    }
+    public static int[][] diffpoint5(){
+        int[][] diffpoint = new int[5][2];
+        diffpoint[0][0] = 450;
+        diffpoint[0][1] = 470;
+        diffpoint[1][0] = 500;
+        diffpoint[1][1] = 520;
+        diffpoint[2][0] = 580;
+        diffpoint[2][1] = 600;
+        diffpoint[3][0] = 650;
+        diffpoint[3][1] = 680;
+        diffpoint[3][0] = 700;
+        diffpoint[3][1] = 780;
+        return diffpoint;
+    }
 }
