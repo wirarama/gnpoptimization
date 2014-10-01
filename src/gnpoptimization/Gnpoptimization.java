@@ -20,7 +20,7 @@ public class Gnpoptimization {
      */
     public static void main(String[] args) throws IOException{
         // TODO code application logic here
-        //cases.cases1();
+        cases.cases1();
         cases.cases2();
         cases.cases3();
     }
