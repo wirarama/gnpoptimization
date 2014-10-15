@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 public class cases {
     public static void cases1() throws IOException{
-        int[] normdiff1 = {0,50,50000};
+        int[] normdiff1 = {0,10,50000};
         int[] sigdiff1 = {200,7000,500};
-        int[] normdiff2 = {0,250,50000};
+        int[] normdiff2 = {0,60,50000};
         int[] sigdiff2 = {50,2000,400};
         int[] normdiff3 = {0,10,40000};
         int[] sigdiff3 = {50,5000,300};
@@ -35,17 +35,17 @@ public class cases {
         plot.makeplot2(dataplot,label,"GNP without online optimization 1","rule","silhouette");
     }
     public static void cases1b() throws IOException{
-        int[] normdiff1 = {0,80,50000};
+        int[] normdiff1 = {0,10,50000};
         int[] sigdiff1 = {200,7000,500};
-        int[] normdiff2 = {0,320,50000};
+        int[] normdiff2 = {0,60,50000};
         int[] sigdiff2 = {50,2000,400};
         int[] normdiff3 = {0,10,40000};
         int[] sigdiff3 = {50,5000,300};
-        double[][] data1 = dataset.createdata(5.43,9.89,1500,"data1",
+        double[][] data1 = dataset.createdata(5.43,9.89,2000,"data1",
                 diffpoint.diffpoint1c(),normdiff1,sigdiff1);
-        double[][] data2 = dataset.createdata(4.32,9.31,1500,"data2",
+        double[][] data2 = dataset.createdata(4.32,9.31,2000,"data2",
                 diffpoint.diffpoint2c(),normdiff2,sigdiff2);
-        double[][] data3 = dataset.createdata(5.64,9.04,1500,"data3",
+        double[][] data3 = dataset.createdata(5.64,9.04,2000,"data3",
                 diffpoint.diffpoint3c(),normdiff3,sigdiff3);
         ArrayList<double[][]> dataplot = new ArrayList<>();
         dataplot.add(data1);
@@ -93,17 +93,17 @@ public class cases {
         plot.makeplot2(dataplot,label,"GNP with online optimization 1","data","silhouette");
     }
     public static void cases4b() throws IOException{
-        int[] normdiff1 = {0,20,50000};
+        int[] normdiff1 = {0,10,50000};
         int[] sigdiff1 = {200,7000,500};
         int[] normdiff2 = {0,60,50000};
         int[] sigdiff2 = {50,2000,400};
-        int[] normdiff3 = {0,15,40000};
+        int[] normdiff3 = {0,10,40000};
         int[] sigdiff3 = {50,5000,300};
-        double[][] data1 = dataset.createdata(5.43,9.89,1500,"data1",
+        double[][] data1 = dataset.createdata(5.43,9.89,2000,"data1",
                 diffpoint.diffpoint1d(),normdiff1,sigdiff1);
-        double[][] data2 = dataset.createdata(4.32,9.31,1500,"data2",
+        double[][] data2 = dataset.createdata(4.32,9.31,2000,"data2",
                 diffpoint.diffpoint2d(),normdiff2,sigdiff2);
-        double[][] data3 = dataset.createdata(5.64,9.04,1500,"data3",
+        double[][] data3 = dataset.createdata(5.64,9.04,2000,"data3",
                 diffpoint.diffpoint3d(),normdiff3,sigdiff3);
         ArrayList<double[][]> dataplot = new ArrayList<>();
         dataplot.add(data1);
