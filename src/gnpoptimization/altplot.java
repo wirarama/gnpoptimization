@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class altplot {
     static double[] gnp = {0.921,0.902,0.899,0.818,0.799,0.756,0.701,0.672};
     static double[] gnpop = {0.923,0.922,0.901,0.899,0.849,0.820,0.801,0.792};
-    static String[] method = {"gnp","gnpop"};
+    static String[] method = {"GNP","Optimized GNP"};
     static int[] dataamount = {1000,1500,2000,2500,3000,3500,4000,4500};
     
     public static void silhoutteresult() throws IOException{
@@ -33,11 +33,11 @@ public class altplot {
                 double diff = randomrangedouble(0.001,0.002)/arrayfunction.randomrange(50,1000);
                 result += diff;
                 switch (method1) {
-                    case "gnp":
+                    case "GNP":
                         result += gnp[i];
                         resultlog[0][i] = result;
                         break;
-                    case "gnpop":
+                    case "Optimized GNP":
                         result += gnpop[i];
                         resultlog[1][i] = result;
                         break;
@@ -46,7 +46,7 @@ public class altplot {
         }
         silhoutte1(resultlog,"silhouette comparison");
         try (final BufferedWriter out = new BufferedWriter(new FileWriter("silhoutte-comparison.csv"))) {
-            out.write("\"data amount\",\"gnp\",\"gnp optimization\"");
+            out.write("\"number of data\",\"GNP\",\"Optimized GNP\"");
             out.newLine();
             for(int i = 0; i<gnp.length; i++){
                 out.write(dataamount[i]+","+resultlog[0][i]+","+resultlog[1][i]);
@@ -70,7 +70,7 @@ public class altplot {
             }
             dataplot.add(data1);
         }
-        makeplot2(dataplot,label,add,"data amount","silhouette value");
+        makeplot2(dataplot,label,add,"number of data","silhouette values");
     }
     public static void makeplot2(ArrayList<double[][]> data,String[] label,String pngname,String xlabel,String ylabel){
         JavaPlot p = new JavaPlot();
