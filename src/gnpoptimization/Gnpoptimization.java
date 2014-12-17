@@ -20,12 +20,13 @@ public class Gnpoptimization {
      */
     public static void main(String[] args) throws IOException{
         // TODO code application logic here
-        cases.cases1();
+        //cases.cases1();
         //cases.cases2();
         //cases.cases3();
-        cases.cases4();
-        cases.cases1b();
-        cases.cases4b();
-        altplot.silhoutteresult1();
+        //cases.cases4();
+        //cases.cases1b();
+        //cases.cases4b();
+        altplot.silhoutteresult2();
+        altplot.silhoutteresult3();
     }
 }
