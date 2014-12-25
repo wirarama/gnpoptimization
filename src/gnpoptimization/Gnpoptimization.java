@@ -26,7 +26,8 @@ public class Gnpoptimization {
         //cases.cases4();
         //cases.cases1b();
         //cases.cases4b();
-        altplot.silhoutteresult2();
-        altplot.silhoutteresult3();
+        //altplot.silhoutteresult2();
+        //altplot.silhoutteresult3();
+        silhouette1.valuetest();
     }
 }
